@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star, Clock, Truck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -52,6 +51,31 @@ const heroSlides = [
   },
 ];
 
+const featuredCategories = [
+  { name: "Phones", icon: "📱", description: "Latest smartphones and accessories" },
+  { name: "Laptops", icon: "💻", description: "Powerful computers for work and play" },
+  { name: "Headphones", icon: "🎧", description: "Premium audio experiences" },
+  { name: "TVs", icon: "📺", description: "Crystal clear displays" },
+];
+
+const features = [
+  { 
+    icon: Star,
+    title: "Premium Quality",
+    description: "Only the best brands and products"
+  },
+  {
+    icon: Clock,
+    title: "24/7 Support",
+    description: "Always here to help you"
+  },
+  {
+    icon: Truck,
+    title: "Fast Delivery",
+    description: "Quick and reliable shipping"
+  }
+];
+
 const ClientDashboard = () => {
   return (
     <div className="min-h-screen">
@@ -59,7 +83,15 @@ const ClientDashboard = () => {
       
       {/* Hero Section */}
       <section className="relative">
-        <Carousel className="w-full max-w-screen-2xl mx-auto" opts={{ loop: true, align: "start" }}>
+        <Carousel 
+          className="w-full max-w-screen-2xl mx-auto" 
+          opts={{ 
+            loop: true, 
+            align: "start",
+            autoplay: true,
+            delay: 5000
+          }}
+        >
           <CarouselContent>
             {heroSlides.map((slide, index) => (
               <CarouselItem key={index}>
@@ -97,7 +129,40 @@ const ClientDashboard = () => {
         </Carousel>
       </section>
 
-      {/* Popular Products */}
+      {/* Featured Categories */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-3xl font-bold tracking-tight mb-2">Shop by Category</h2>
+            <p className="text-muted-foreground">Find what you need in our curated collections</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredCategories.map((category, index) => (
+              <motion.div
+                key={category.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="text-4xl mb-4">{category.icon}</div>
+                  <h3 className="font-semibold mb-2">{category.name}</h3>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Products Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -134,6 +199,62 @@ const ClientDashboard = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-3xl font-bold tracking-tight mb-2">Why Choose Us</h2>
+            <p className="text-muted-foreground">Experience shopping at its finest</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <feature.icon className="w-10 h-10 mx-auto mb-4 text-primary" />
+                  <h3 className="font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl mx-auto text-center"
+          >
+            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p className="mb-6">Subscribe to our newsletter for exclusive offers and updates</p>
+            <div className="flex flex-col sm:flex-row gap-2 justify-center">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="px-4 py-2 rounded-md text-foreground"
+              />
+              <Button variant="secondary">Subscribe</Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
