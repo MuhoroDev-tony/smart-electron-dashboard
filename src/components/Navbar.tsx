@@ -1,11 +1,14 @@
 
 import { motion } from "framer-motion";
-import { Search, ShoppingCart, User } from "lucide-react";
+import { Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -41,9 +44,67 @@ const Navbar = () => {
             <Button size="icon" variant="ghost">
               <User className="h-5 w-5" />
             </Button>
+            <Button 
+              size="icon" 
+              variant="ghost" 
+              className="md:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="md:hidden border-b bg-white"
+        >
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            <div className="flex items-center">
+              <Input 
+                type="search"
+                placeholder="Search products..."
+                className="w-full"
+              />
+            </div>
+            <nav className="flex flex-col gap-2">
+              <Link 
+                to="/category/phones" 
+                className="px-4 py-2 hover:bg-gray-100 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Phones
+              </Link>
+              <Link 
+                to="/category/laptops" 
+                className="px-4 py-2 hover:bg-gray-100 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Laptops
+              </Link>
+              <Link 
+                to="/category/headphones" 
+                className="px-4 py-2 hover:bg-gray-100 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Headphones
+              </Link>
+              <Link 
+                to="/category/tvs" 
+                className="px-4 py-2 hover:bg-gray-100 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                TVs
+              </Link>
+            </nav>
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 };

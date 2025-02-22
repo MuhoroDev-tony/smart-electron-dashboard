@@ -3,7 +3,8 @@ import { ArrowRight, Star, Clock, Truck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const products = [
   {
@@ -76,9 +77,28 @@ const features = [
   }
 ];
 
+const faqs = [
+  {
+    question: "How long does shipping take?",
+    answer: "Standard shipping typically takes 3-5 business days. Express shipping options are available at checkout for faster delivery."
+  },
+  {
+    question: "What is your return policy?",
+    answer: "We offer a 30-day return policy on all items. Products must be in original condition with tags attached."
+  },
+  {
+    question: "Do you ship internationally?",
+    answer: "Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by location."
+  },
+  {
+    question: "How can I track my order?",
+    answer: "Once your order ships, you'll receive a tracking number via email to monitor your delivery status."
+  }
+];
+
 const ClientDashboard = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen max-w-[1920px] mx-auto">
       <Navbar />
       
       {/* Hero Section */}
@@ -124,8 +144,6 @@ const ClientDashboard = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
         </Carousel>
       </section>
 
@@ -202,8 +220,8 @@ const ClientDashboard = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-primary/5">
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -211,26 +229,19 @@ const ClientDashboard = () => {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold tracking-tight mb-2">Why Choose Us</h2>
-            <p className="text-muted-foreground">Experience shopping at its finest</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-2">Frequently Asked Questions</h2>
+            <p className="text-muted-foreground">Find answers to common questions about our services</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <feature.icon className="w-10 h-10 mx-auto mb-4 text-primary" />
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
