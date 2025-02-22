@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-export type CarouselApi = any
+type CarouselApi = any
 
 type CarouselProps = {
   opts?: any
@@ -230,10 +230,10 @@ const CarouselNext = React.forwardRef<
 CarouselNext.displayName = "CarouselNext"
 
 export {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  type CarouselApi,
 }
