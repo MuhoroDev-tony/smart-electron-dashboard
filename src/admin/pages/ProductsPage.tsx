@@ -9,6 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Plus } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const products = [
   {
@@ -37,6 +39,13 @@ const products = [
   },
 ];
 
+const stockData = [
+  { category: 'Phones', stock: 150 },
+  { category: 'Laptops', stock: 80 },
+  { category: 'TVs', stock: 60 },
+  { category: 'Headphones', stock: 200 },
+];
+
 export default function ProductsPage() {
   return (
     <div className="space-y-8">
@@ -50,6 +59,24 @@ export default function ProductsPage() {
         </Button>
       </div>
 
+      <Card>
+        <CardHeader>
+          <CardTitle>Stock Levels by Category</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={stockData}>
+                <XAxis dataKey="category" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="stock" fill="#8884d8" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -59,6 +86,7 @@ export default function ProductsPage() {
               <TableHead>Price</TableHead>
               <TableHead>Stock</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -69,6 +97,9 @@ export default function ProductsPage() {
                 <TableCell>${product.price}</TableCell>
                 <TableCell>{product.stock}</TableCell>
                 <TableCell>{product.status}</TableCell>
+                <TableCell>
+                  <Button variant="ghost" size="sm">Edit</Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

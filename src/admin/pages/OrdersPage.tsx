@@ -8,6 +8,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const orders = [
   {
@@ -33,6 +35,16 @@ const orders = [
   },
 ];
 
+const orderTrendData = [
+  { date: '2024-02-14', orders: 12 },
+  { date: '2024-02-15', orders: 19 },
+  { date: '2024-02-16', orders: 15 },
+  { date: '2024-02-17', orders: 22 },
+  { date: '2024-02-18', orders: 18 },
+  { date: '2024-02-19', orders: 25 },
+  { date: '2024-02-20', orders: 30 },
+];
+
 export default function OrdersPage() {
   return (
     <div className="space-y-8">
@@ -40,6 +52,24 @@ export default function OrdersPage() {
         <h2 className="text-3xl font-bold tracking-tight">Orders</h2>
         <p className="text-muted-foreground">Manage customer orders</p>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Order Trends</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={orderTrendData}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
+                <Area type="monotone" dataKey="orders" stroke="#8884d8" fill="#8884d8" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
 
       <div className="rounded-md border">
         <Table>
