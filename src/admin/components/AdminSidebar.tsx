@@ -13,6 +13,7 @@ import {
   ShoppingCart,
   Sun,
   Users,
+  X,
 } from "lucide-react";
 
 const mainNavItems = [
@@ -43,17 +44,29 @@ const mainNavItems = [
   },
 ];
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ onClose }: AdminSidebarProps) {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
 
   return (
     <div className="relative flex h-screen w-72 flex-col border-r bg-background">
-      <div className="p-4 border-b">
+      <div className="flex items-center justify-between p-4 border-b">
         <Link to="/admin/dashboard" className="flex items-center gap-2 font-semibold text-xl">
           <ShoppingCart className="h-6 w-6" />
           Admin Panel
         </Link>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={onClose}
+        >
+          <X className="h-5 w-5" />
+        </Button>
       </div>
       
       <ScrollArea className="flex-1 px-4 py-6">
