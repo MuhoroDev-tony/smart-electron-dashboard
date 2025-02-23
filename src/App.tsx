@@ -17,6 +17,9 @@ import NotFound from "./pages/NotFound";
 import AdminLayout from "./admin/layouts/AdminLayout";
 import LoginPage from "./admin/pages/LoginPage";
 import DashboardPage from "./admin/pages/DashboardPage";
+import ProductsPage from "./admin/pages/ProductsPage";
+import OrdersPage from "./admin/pages/OrdersPage";
+import UsersPage from "./admin/pages/UsersPage";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,9 @@ const App = () => (
             <Route path="/admin/login" element={<LoginPage />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="dashboard" element={<DashboardPage />} />
+              <Route path="products" element={<ProductsPage />} />
+              <Route path="orders" element={<OrdersPage />} />
+              <Route path="users" element={<UsersPage />} />
             </Route>
             
             <Route path="*" element={<NotFound />} />
