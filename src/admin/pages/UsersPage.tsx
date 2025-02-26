@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DonutChart, Legend } from "@tremor/react";
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Badge } from "@/components/ui/badge";
 import { Filter, Mail, Phone, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -58,6 +58,8 @@ const usersByRole = [
   { name: "Admins", value: 12 },
   { name: "Staff", value: 45 },
 ];
+
+const COLORS = ['#3b82f6', '#06b6d4', '#4f46e5'];
 
 export default function UsersPage() {
   return (
@@ -114,13 +116,25 @@ export default function UsersPage() {
           <CardTitle>Users by Role</CardTitle>
         </CardHeader>
         <CardContent className="flex justify-center">
-          <div className="w-full max-w-xs">
-            <DonutChart
-              data={usersByRole}
-              category="value"
-              index="name"
-              colors={["blue", "cyan", "indigo"]}
-            />
+          <div className="w-full max-w-xs h-[300px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={usersByRole}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, value }) => `${name}: ${value}`}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {usersByRole.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         </CardContent>
       </Card>
