@@ -130,7 +130,7 @@ export default function ProductsPage() {
       </div>
 
       <Dialog open={showAddProduct} onOpenChange={setShowAddProduct}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <ProductForm onClose={() => setShowAddProduct(false)} />
         </DialogContent>
       </Dialog>
