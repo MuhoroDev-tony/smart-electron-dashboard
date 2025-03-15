@@ -6,49 +6,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
-import { useState } from "react";
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+import { useCart } from "@/contexts/CartContext";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "iPhone 15 Pro",
-      price: 999,
-      image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=1964&auto=format&fit=crop",
-      quantity: 1
-    },
-    {
-      id: 2,
-      name: "Sony WH-1000XM5",
-      price: 349,
-      image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=1888&auto=format&fit=crop",
-      quantity: 1
-    }
-  ]);
-
-  const updateQuantity = (id: number, change: number) => {
-    setCartItems(prevItems =>
-      prevItems.map(item => {
-        if (item.id === id) {
-          const newQuantity = Math.max(1, item.quantity + change);
-          return { ...item, quantity: newQuantity };
-        }
-        return item;
-      })
-    );
-  };
-
-  const removeItem = (id: number) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
-  };
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const tax = subtotal * 0.08;
@@ -114,7 +75,7 @@ const CartPage = () => {
                                 variant="ghost"
                                 size="icon"
                                 className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                                onClick={() => removeItem(item.id)}
+                                onClick={() => removeFromCart(item.id)}
                               >
                                 <Trash2 className="h-4 w-4" />
                               </Button>
