@@ -50,21 +50,22 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-gray-600">
               <li className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-purple-600" />
-                <span>123 Commerce St, Tech City, TC 12345</span>
+                <span>Nairobi, Kenya</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-4 w-4 mr-2 text-purple-600" />
-                <span>+1 (555) 123-4567</span>
+                <span>+2547 06471469</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-purple-600" />
-                <span>support@shopcart.com</span>
+                <span>anthonymuhoro7@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-purple-200 text-center text-sm text-gray-600">
-          <p>© 2024 ShopCart Electronics. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} ShopCart Electronics. All rights reserved.</p>
+        
           <div className="mt-2 flex justify-center space-x-4">
             <span className="hover:text-purple-700 cursor-pointer">Privacy Policy</span>
             <span className="hover:text-purple-700 cursor-pointer">Terms of Service</span>
