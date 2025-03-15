@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Clock, Truck } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -11,28 +12,28 @@ const products = [
     id: 1,
     name: "Wireless Earbuds",
     price: 89.99,
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=1932&auto=format&fit=crop",
     category: "headphones"
   },
   {
     id: 2,
     name: "AirPods Max",
     price: 559.99,
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1628703143124-907b3af59427?q=80&w=1887&auto=format&fit=crop",
     category: "headphones"
   },
   {
     id: 3,
     name: "Bose BT Earphones",
     price: 289.99,
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=1932&auto=format&fit=crop",
     category: "headphones"
   },
   {
     id: 4,
     name: "VIVEFOX Headphones",
     price: 39.99,
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=1888&auto=format&fit=crop",
     category: "headphones"
   }
 ];
@@ -40,15 +41,15 @@ const products = [
 const heroSlides = [
   {
     title: "Grab Upto 50% Off On Selected Headphone",
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=1170&auto=format&fit=crop",
   },
   {
     title: "New Arrivals in Wireless Audio",
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1577174881658-0f30ed549adc?q=80&w=1170&auto=format&fit=crop",
   },
   {
     title: "Premium Sound Experience",
-    image: "/lovable-uploads/c741cde2-fae6-4342-8b46-4693d79c59bf.png",
+    image: "https://images.unsplash.com/photo-1546435770-a3e736e30499?q=80&w=1165&auto=format&fit=crop",
   },
 ];
 
@@ -269,49 +270,7 @@ const ClientDashboard = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-semibold mb-4">About Us</h3>
-              <p className="text-sm text-muted-foreground">
-                Your trusted source for premium electronics and accessories.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Categories</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Phones</li>
-                <li>Laptops</li>
-                <li>Headphones</li>
-                <li>TVs</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Customer Service</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Contact Us</li>
-                <li>Shipping Policy</li>
-                <li>Returns & Exchanges</li>
-                <li>FAQs</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Connect With Us</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>LinkedIn</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © 2024 Shopcart. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { useTheme } from "@/components/theme-provider";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,9 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   Bell,
-  Moon,
   Search,
-  Sun,
   User,
   Settings,
   LogOut,
@@ -34,7 +31,6 @@ interface AdminTopbarProps {
 }
 
 export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
-  const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -76,8 +72,8 @@ export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
       <div className="flex items-center gap-3">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative hover:bg-purple-50 dark:hover:bg-slate-800">
-              <Bell className="h-5 w-5 text-slate-700 dark:text-slate-300" />
+            <Button variant="ghost" size="icon" className="relative hover:bg-purple-50">
+              <Bell className="h-5 w-5 text-slate-700" />
               <Badge className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center text-[10px] bg-purple-600">
                 4
               </Badge>
@@ -93,7 +89,7 @@ export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
                 { title: "New user signed up", time: "3 hours ago", icon: "👤" },
                 { title: "Monthly report available", time: "5 hours ago", icon: "📊" },
               ].map((notification, index) => (
-                <DropdownMenuItem key={index} className="cursor-pointer p-3 focus:bg-purple-50 dark:focus:bg-slate-800">
+                <DropdownMenuItem key={index} className="cursor-pointer p-3 focus:bg-purple-50">
                   <div className="flex items-start gap-3">
                     <div className="text-xl">{notification.icon}</div>
                     <div className="space-y-1">
@@ -105,36 +101,23 @@ export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
               ))}
             </div>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer justify-center text-center text-sm text-purple-600 dark:text-purple-400 font-medium">
+            <DropdownMenuItem className="cursor-pointer justify-center text-center text-sm text-purple-600 font-medium">
               View all notifications
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="hover:bg-purple-50 dark:hover:bg-slate-800"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        >
-          {theme === "light" ? (
-            <Moon className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-          ) : (
-            <Sun className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-          )}
-        </Button>
-
-        <Button variant="ghost" size="icon" className="hover:bg-purple-50 dark:hover:bg-slate-800">
-          <HelpCircle className="h-5 w-5 text-slate-700 dark:text-slate-300" />
+        <Button variant="ghost" size="icon" className="hover:bg-purple-50">
+          <HelpCircle className="h-5 w-5 text-slate-700" />
         </Button>
 
         <Separator orientation="vertical" className="h-6" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full h-9 w-9 border-2 border-purple-200 dark:border-slate-700 p-0 ring-purple-400 hover:bg-purple-50 dark:hover:bg-slate-800">
+            <Button variant="ghost" size="icon" className="rounded-full h-9 w-9 border-2 border-purple-200 p-0 ring-purple-400 hover:bg-purple-50">
               <img 
-                src="https://ui-avatars.com/api/?name=Admin+User&background=8b5cf6&color=fff" 
+                src="https://randomuser.me/api/portraits/men/44.jpg" 
                 alt="User" 
                 className="rounded-full"
               />
@@ -163,7 +146,7 @@ export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
               GitHub
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 text-red-600 dark:text-red-400">
+            <DropdownMenuItem className="gap-2 text-red-600">
               <LogOut className="h-4 w-4" />
               Log out
             </DropdownMenuItem>

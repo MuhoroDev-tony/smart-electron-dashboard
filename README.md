@@ -1,69 +1,87 @@
-# Welcome to your Lovable project
 
-## Project info
+# ShopCart - Modern E-commerce Platform
 
-**URL**: https://lovable.dev/projects/70a6863d-8f41-4b65-9821-28a44ffd55db
+ShopCart is a comprehensive e-commerce platform built with modern web technologies, providing both customer-facing storefront and admin dashboard functionalities.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+### Customer Storefront
+- **Product Browsing**: Browse products by categories (Phones, Laptops, Headphones, TVs)
+- **Shopping Cart**: Add items to cart and manage purchases
+- **Responsive Design**: Optimized for all device sizes
 
-**Use Lovable**
+### Admin Dashboard
+- **Analytics**: Track sales, revenue, and user metrics
+- **Product Management**: Add, edit, and manage product inventory
+- **Order Management**: Process and track customer orders
+- **User Management**: Manage customer accounts and permissions
+- **Settings**: Configure store settings and preferences
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/70a6863d-8f41-4b65-9821-28a44ffd55db) and start prompting.
+## Technology Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+This project is built with:
 
-**Use your preferred IDE**
+- **Vite**: Fast build tool and development server
+- **TypeScript**: Type-safe JavaScript
+- **React**: UI component library
+- **React Router**: For navigation and routing
+- **shadcn/ui**: High-quality UI components
+- **Tailwind CSS**: Utility-first CSS framework
+- **Framer Motion**: Animation library
+- **Tanstack Query**: Data fetching and state management
+- **Recharts**: Composable charting library
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone <REPOSITORY_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd shopcart
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173/`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+- `/src`: Source code
+  - `/admin`: Admin dashboard components and pages
+    - `/components`: Admin-specific UI components
+    - `/layouts`: Admin layout templates
+    - `/pages`: Admin page components
+  - `/components`: Shared UI components
+    - `/ui`: shadcn/ui components
+  - `/pages`: Customer-facing page components
+    - `/category`: Product category pages
+  - `/hooks`: Custom React hooks
+  - `/lib`: Utility functions and helpers
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Contributing
 
-## What technologies are used for this project?
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-This project is built with .
+## License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is licensed under the MIT License.
 
-## How can I deploy this project?
+## Acknowledgments
 
-Simply open [Lovable](https://lovable.dev/projects/70a6863d-8f41-4b65-9821-28a44ffd55db) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful UI components
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [Unsplash](https://unsplash.com/) for high-quality product images
